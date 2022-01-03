@@ -43,75 +43,65 @@ date_base_param = date_now().strftime('%Y/%m/%d')
 # function for get data from noaa dataOpen 
 # Tḧis function is the base from the all work
 # beacause its getting the data from noaa
-def get_noaa_data(date:str=date_base_param,hour:str='00'):
+class get_noaa_data:
+
+    def __init__(self,date:str=date_base_param,hour:str='00'):
+        '''
+            params:
+                date: str
+                    input a date in inverse mode
+        '''
+        date_input=date
+        date=date.split('/')
+        date=''.join(date)
+        #print(date)
+        # url base from the data noaa in GFS 0.25
+        url_cdf=f'https://nomads.ncep.noaa.gov/dods/gfs_0p25/gfs{date}/gfs_0p25_{hour}z'
+        
+        # reading the data required in the param's
+        file = xr.open_dataset(url_cdf)
+        
+        self.file_noaa = file
+        
+    
+    def __getitem__(self,key:str):
+        return self.file_noaa.variables[key]
+    
+    # getting the list data present in the data noaa GFS 0.25
+    def get_noaa_keys(self):
+        '''
+        '''
+
+        keys = self.file.variables.keys()
+        keys_about = []
+        for key in keys:
+            about_key = self.file.variables[key].attrs['long_name'] 
+            keys_about.append({key:about_key})
+        
+        return np.array(keys_about)
+
+
+
+
     '''
-        params:
-            date: str
-                input a date in inverse mode
+    lon_j = 360-40.5
+    dt_jua=file.sel(lon=lon_j,lat=-9.41,method='nearest')
+    dt_jua['tmpsfc']=dt_jua['tmpsfc']-273
     '''
-    date_input=date
-    date=date.split('/')
-    date=''.join(date)
-    #print(date)
-    # url base from the data noaa in GFS 0.25
-    url_cdf=f'https://nomads.ncep.noaa.gov/dods/gfs_0p25/gfs{date}/gfs_0p25_{hour}z'
-    
-    # reading the data required in the param's
-    file = xr.open_dataset(url_cdf)
-    data = file.variables
-    #data_about=file.variables['long_name']
-    #print(data_key,"->",data.attrs['long_name'],f'[{date_input}]')
-    
-    return data
 
-    
-    
-# getting the list data present in the data noaa GFS 0.25
-def get_noaa_keys(date=date_base_param,hour='00'):
-    '''
-    '''
-    date_input=date
-    date=date.split('/')
-    date=''.join(date)
-    
-    url_cdf=f'https://nomads.ncep.noaa.gov/dods/gfs_0p25/gfs{date}/gfs_0p25_{hour}z'
-    
-    file = xr.open_dataset(url_cdf)
-    keys = file.variables.keys()
-    keys_about = []
-    for key in keys:
-        about_key = file.variables[key].attrs['long_name'] 
-        keys_about.append({key:about_key})
-    
-    return np.array(keys_about)
+    # getting data only a just point
+    # this project in question needed
+    # from a great logic work on the 
+    # changing lon.
 
-
-
-
-'''
-lon_j = 360-40.5
-dt_jua=file.sel(lon=lon_j,lat=-9.41,method='nearest')
-dt_jua['tmpsfc']=dt_jua['tmpsfc']-273
-'''
-
-# getting data only a just point
-# this project in question needed
-# from a great logic work on the 
-# changing lon.
-
-def get_data_from_point(point,date=date_base_param,hour='00',data_key='tmpsfc'):
-    '''
-    '''
-    date_input=date
-    date=date.split('/')
-    date=''.join(date)
-    url_cdf=f'https://nomads.ncep.noaa.gov/dods/gfs_0p25/gfs{date}/gfs_0p25_{hour}z'
-    file = xr.open_dataset(url_cdf)
-    data = file.variables
-    
-    lat,lon = point[0],abs(point[1]) if point[1]<0 else 360-point[1]
-    print(f'lat: {lat}, lon: {lon}')
-    data_point = file.sel(lon=lon,lat=lat,method='nearest')
-    data_point = {'time':data_point.variables['time'],'data':data_point.variables[data_key]}
-    
-    return data_point
+    def get_data_from_point(self,point:tuple):
+        '''
+        '''
+        data = self.file.variables
+        
+        lat,lon = point[0],abs(point[1]) if point[1]<0 else 360-point[1]
+        print(f'lat: {lat}, lon: {lon}')
+        data_point = self.file.sel(lon=lon,lat=lat,method='nearest')
+        # data_point = {'time':data_point.variables['time'],'data':data_point.variables[data_key]}
+        
+        return data_point
