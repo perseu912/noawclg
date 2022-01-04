@@ -1,6 +1,7 @@
 # noawclg
 a light lib version from noaawc
 
+
 ## Instalation
 
 ```sh
@@ -12,13 +13,16 @@ $ pip3 install noawcgl -U
 <br>
 
 #### from a point
-getting the data (the key base is for surface temperature ```data_key='tmpsfc'```):
+getting the data:
 ```py
-from noawclg import get_data_from_point as gdfp
+from noawclg import get_noaa_data as gnd
 
 point = (-9.41,-40.5)
 
-data = gdfp(point)
+data = gnd.get_data_from_point(point)
+
+# a example for the surface temperature
+data = {'time':data['time'],'data':data['tmpsfc']}
 
 print(data)
 ```
@@ -77,7 +81,7 @@ Attributes:
     long_name:  ** surface temperature [k] }
 ```
 
-### getting the list keys for get data
+### getting the list keys for get data (use it as guide)
 ```py
 from noawclg import get_noaa_keys as  gnk
 

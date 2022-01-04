@@ -14,7 +14,7 @@ Why it work use the GPLv3 LICENSE?
     a process.
 
 =================================================================
-waht is for it project?
+what's for it project?
 -----------------------------------------------------------------
     This project is for a best development in works with 
     climate prediction and getting it data from the 
@@ -81,27 +81,15 @@ class get_noaa_data:
         return np.array(keys_about)
 
 
-
-
-    '''
-    lon_j = 360-40.5
-    dt_jua=file.sel(lon=lon_j,lat=-9.41,method='nearest')
-    dt_jua['tmpsfc']=dt_jua['tmpsfc']-273
-    '''
-
-    # getting data only a just point
-    # this project in question needed
-    # from a great logic work on the 
-    # changing lon.
-
     def get_data_from_point(self,point:tuple):
         '''
         '''
-        data = self.file.variables
+        new_data = get_noaa_data()
+        #data = self.file.variables
         
         lat,lon = point[0],abs(point[1]) if point[1]<0 else 360-point[1]
         print(f'lat: {lat}, lon: {lon}')
-        data_point = self.file.sel(lon=lon,lat=lat,method='nearest')
+        data_point = new_data.file.sel(lon=lon,lat=lat,method='nearest')
         # data_point = {'time':data_point.variables['time'],'data':data_point.variables[data_key]}
         
         return data_point
