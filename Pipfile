@@ -8,6 +8,8 @@ xarray = "*"
 numpy = "*"
 matplotlib = "*"
 netcdf4 = "*"
+openpyxl = "*"
+geopy = "*"
 
 [dev-packages]
 

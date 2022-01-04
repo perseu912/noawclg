@@ -1,8 +1,7 @@
-import matplotlib.pyplot as plt
-from noawclg import get_data_from_point as gdfp
+from noawclg import get_noaa_data as gnd
+data_noaa = gnd()
 
-point = (-9.41,-40.5)
+place = 'salvador BA'
 
-data = gdfp(point)
 
-print(data)
+data_noaa.plot_temperature_from_place(place=place)
