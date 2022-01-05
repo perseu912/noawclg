@@ -29,6 +29,10 @@ it's a base from the noaawc lib
     the anaconda.
 '''
 
+__version__ = '0.0.2b4'
+__author__ = 'Reinan Br'
+
+
 # importing the need lib's
 #import matplotlib.pyplot as plt
 import numpy as np
@@ -51,7 +55,9 @@ date_base_param = date_now().strftime('%Y/%m/%d')
 # Tḧis function is the base from the all work
 # beacause its getting the data from noaa
 class get_noaa_data:
-
+    __version__ = __version__
+    __author__ = __author__
+    
     def __init__(self,date:str=date_base_param,hour:str='00'):
         '''
             params:
@@ -80,10 +86,10 @@ class get_noaa_data:
         '''
         '''
 
-        keys = self.file.variables.keys()
+        keys = self.file_noaa.variables.keys()
         keys_about = []
         for key in keys:
-            about_key = self.file.variables[key].attrs['long_name'] 
+            about_key = self.file_noaa.variables[key].attrs['long_name'] 
             keys_about.append({key:about_key})
         
         return np.array(keys_about)
