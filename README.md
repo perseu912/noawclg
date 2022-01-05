@@ -8,19 +8,12 @@
 <a href='http://dgp.cnpq.br/dgp/espelhogrupo/0180330616769073'><img src='https://shields.io/badge/cnpq-grupo_de_fisica_computacional_ifsertao--pe-blueviolet?logo=appveyor&style=for-the-badge'></a>
 
 <p align='center'>
-<!-- github dados -->
-<a href='https://python.org'><img src='https://img.shields.io/github/pipenv/locked/python-version/perseu912/noawclg'></a>
-
-<img alt="PyPI - License" src="https://img.shields.io/pypi/l/noawclg">
-
-<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/perseu912/noawclg">
-
-<br/>
+<!-- github dados --
 <!-- sites de pacotes -->
 <a href='https://pypi.org/project/noaawc/'><img src='https://img.shields.io/pypi/v/noawclg'></a>
 <a href='#'><img src='https://img.shields.io/pypi/wheel/noawclg'></a>
 <a href='#'><img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/noawclg"></a>
-<a href='#'><img src='https://img.shields.io/pypi/implementation/noawclg'></a>
+<img alt="PyPI - License" src="https://img.shields.io/pypi/l/noawclg">
 <br/>
 <!-- outros premios e analises -->
 <!-- <a href='#'><img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/perseu912/noawclg?logo=codefactor">
