@@ -26,6 +26,7 @@
 </p>
 <p align='center'> <b>Library for getting  the world data climate from the data noaa/nasa</b></p>
 <hr/>
+
 ## Instalation
 
 ```sh
@@ -105,11 +106,40 @@ Attributes:
     long_name:  ** surface temperature [k] }
 ```
 
-### getting the list keys for get data (use it as guide)
+#### plot data from a place:
 ```py
-from noawclg import get_noaa_keys as  gnk
+from noawclg.main import get_noaa_data as gnd
+data_noaa = gnd(gfs='1p00')
 
-print(gnk())
+place = 'juazeiro BA'
+print(data_noaa.get_noaa_keys())
+
+
+## rain's (mm)
+def fmt(data): return data* 100_000
+data_noaa.plot_data_from_place(place=place,path_file='plot_ch1.png',
+                               title='Previsão de Chuvas\nPetrolina-PE/Juazeiro-BA',
+                                ylabel='mm',fmt_data=fmt,key_noaa='prateavesfc')
+
+
+
+## wind speed v-component (m/s)
+def fmt_t(data): return data
+data_noaa.plot_data_from_place(place=place,path_file='plot_wind100m.png',
+                               title='Velocidade dos Ventos\nPetrolina-PE/Juazeiro-BA',
+                                ylabel='m/s',fmt_data=fmt_t,key_noaa='vgrdmwl')
+
+```
+<hr>
+
+
+### getting the list keys for get data (use it as guide)
+
+```py
+from noawclg import get_data_noaa as gdn
+
+data_noaa = gdn()
+print(data_noaa.get_noaa_keys())
 ```
 
 ```sh
