@@ -1,3 +1,7 @@
 from noawclg import get_noaa_data as  gnd
 
-print(gnd().get_noaa_keys())
+keys=(gnd().get_noaa_keys())
+
+
+for key in keys.keys():
+    print(f'{key}: {keys[key]}')
