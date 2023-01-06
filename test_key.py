@@ -1,3 +1,3 @@
-from noawclg import get_noaa_keys as  gnk
+from noawclg import get_noaa_data as  gnd
 
-print(gnk())
+print(gnd().get_noaa_keys())

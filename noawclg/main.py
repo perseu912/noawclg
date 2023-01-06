@@ -52,6 +52,8 @@ date_now = datetime.now
 date_base_param = date_now().strftime('%Y/%m/%d')
 
 
+print(xr.__version__)
+
 def fmt(dt): return dt
 
 # function for get data from noaa dataOpen 
@@ -82,7 +84,7 @@ class get_noaa_data:
         #print(date)
         # url base from the data noaa in GFS 0.25 or GFS 1.00
         #url_cdf=f'https://nomads.ncep.noaa.gov/dods/gfs_0p25/gfs{date}/gfs_0p25_{hour}z'
-        url_cdf=f'https://nomads.ncep.noaa.gov/dods/gfs_{gfs}/gfs{date}/gfs_{gfs}_{hour}z'
+        url_cdf='https://nomads.ncep.noaa.gov/dods/gfs_0p25/gfs20230103/gfs_0p25_00z'#f'https://nomads.ncep.noaa.gov/dods/gfs_{gfs}/gfs{date}/gfs_{gfs}_{hour}z'
        
         
         if url_data:
