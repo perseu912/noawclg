@@ -58,25 +58,29 @@ def fmt(dt): return dt
 
 # function for get data from noaa dataOpen 
 # Tḧis function is the base from the all work
-# beacause its getting the data from noaa
+# because its getting the data from noaa
 class get_noaa_data:
     __version__ = __version__
     __author__ = __author__
     
-    def __init__(self,date:str=None,hour:str='00',gfs:str='1p00',url_data:str=None):
+    def __init__(self,date:str=None,hour:str='00',gfs:str='0p25',url_data:str=None):
         '''
             params:
                 date: str
-                    input a date in inverse mode
+                    input a date in mode day/moth/year
+                    ex: 08/01/2022
         '''
-        
-        self.date = date
-        self.gfs = gfs
-        self.url_data = url_data
-        self.hour = hour
         
         if not date:
             date=date_base_param
+        self.date = date
+        date = datetime.strptime(date,'%d/%m/%Y')
+        date = date.strftime('%Y%m%d')
+        print(date)
+        
+        self.gfs = gfs
+        self.url_data = url_data
+        self.hour = hour
         
         date_input=date
         date=date.split('/')
@@ -84,14 +88,14 @@ class get_noaa_data:
         #print(date)
         # url base from the data noaa in GFS 0.25 or GFS 1.00
         #url_cdf=f'https://nomads.ncep.noaa.gov/dods/gfs_0p25/gfs{date}/gfs_0p25_{hour}z'
-        url_cdf='https://nomads.ncep.noaa.gov/dods/gfs_0p25/gfs20230103/gfs_0p25_00z'#f'https://nomads.ncep.noaa.gov/dods/gfs_{gfs}/gfs{date}/gfs_{gfs}_{hour}z'
+        url_cdf=f'https://nomads.ncep.noaa.gov/dods/gfs_{gfs}/gfs{date}/gfs_{gfs}_{hour}z'#'https://nomads.ncep.noaa.gov/dods/gfs_0p25/gfs20230103/gfs_0p25_00z'
        
         
         if url_data:
             print('hmm, url_data, its a urgency?..')
             url_cdf=url_data
     
-        self.date = date
+        #self.date = date
         self.gfs = gfs
         self.url_data = url_data
         self.hour = hour
