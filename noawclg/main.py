@@ -42,19 +42,27 @@ from datetime import datetime
 # from bs4 import beautifulsoup as soup
 
 import matplotlib.pyplot as plt
+
+
+
 plt.style.use('seaborn')
 from geopy.geocoders import Nominatim
 geolocator = Nominatim(user_agent='Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 Build/KOT49H) AppleWebKit/537.36(KHTML, like Gecko)Version/4.0 MQQBrowser/5.0 QQ-URL-Manager Mobile Safari/537.36')
 
 
 
+
+date_base = None
+def set_date(date:str):
+    global date_base
+    date_base = date #'08/01/2023'
+print(xr.__version__)
+
+
+
 __date_now = datetime.now
 date_base_param = __date_now().strftime('%d/%m/%Y')
 
-
-global date_base
-date_base = None #'08/01/2023'
-print(xr.__version__)
 
 
 
@@ -72,9 +80,14 @@ class get_noaa_data:
                     input a date in mode day/moth/year
                     ex: 08/01/2022
         '''
-        
-        if not date:
+        if date_base:
+            print('i fun')
+            date=date_base
+
+        elif not date:
             date=date_base_param
+        
+
         self.date = date
         date = datetime.strptime(date,'%d/%m/%Y')
         date = date.strftime('%Y%m%d')

@@ -6,8 +6,9 @@ import matplotlib.pyplot as plt
 #reinan voltou, porrrrraaaaaaaaa
 
 date_base = '12/01/2023'
-hour = '18'
-data_noaa = gnd(date=date_base,hour=hour)#,url_data='https://nomads.ncep.noaa.gov/dods/gfs_1p00/gfs20220108/gfs_1p00_00z')
+
+main.set_date(date_base)
+data_noaa = gnd()#,url_data='https://nomads.ncep.noaa.gov/dods/gfs_1p00/gfs20220108/gfs_1p00_00z')
 
 place = 'juazeiro BA'
 

@@ -83,14 +83,17 @@ you can see the all keys in <a href='https://github.com/reinanbr/noawclg/blob/ma
 
 ### example plot wind
 ```py
+import noawclg.main as main
 from noawclg.main import get_noaa_data as gnd
 from noawclg.plot import plot_data_from_place as pdp
 import matplotlib.pyplot as plt
-#
+#plt.style.use('dark_background')
+#reinan voltou, porrrrraaaaaaaaa
 
 date_base = '12/01/2023'
-hour = '18'
-data_noaa = gnd(date=date_base,hour=hour)#,url_data='https://nomads.ncep.noaa.gov/dods/gfs_1p00/gfs20220108/gfs_1p00_00z')
+
+main.set_date(date_base)
+data_noaa = gnd()#,url_data='https://nomads.ncep.noaa.gov/dods/gfs_1p00/gfs20220108/gfs_1p00_00z')
 
 place = 'juazeiro BA'
 
@@ -110,6 +113,11 @@ jua_pet.render()
 #plt.show()
 
 
+
 ```
 result:
-<img src='plot_wind100m.png'>
+<img src='https://raw.githubusercontent.com/reinanbr/noawclg/main/plot_wind100m.png'/>
+
+
+
+<!-- the truest Reinan 13/01/23 01:58 :siga a rotina criada -->
