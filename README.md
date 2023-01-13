@@ -122,4 +122,3 @@ result:
 
 <!-- the truest Reinan 13/01/23 01:58 :siga a rotina criada -->
 <!-- N se molde por ninguem e pra ninguem -->
-<!-- aabndone todos os complexos-->
