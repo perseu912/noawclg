@@ -4,7 +4,4 @@ data_noaa = gnd()
 
 temp = data_noaa['tmp80m']
 
-lon = data_noaa['lon']
-
-lat = data_noaa['lat']
-print(lat)
+print(len(temp.to_pandas()))

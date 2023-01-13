@@ -61,6 +61,7 @@ array(['2022-01-01T00:00:00.000000000', '2022-01-01T03:00:00.000000000',
 ```
 
 ### keys
+you can see the all keys in <a href='https://github.com/reinanbr/noawclg/blob/main/key.log'>it page.</a> 
 ```py
 >>> from noawclg import get_noaa_data as  gnd
 
@@ -83,25 +84,31 @@ array(['2022-01-01T00:00:00.000000000', '2022-01-01T03:00:00.000000000',
 ### example plot wind
 ```py
 from noawclg.main import get_noaa_data as gnd
-data_noaa = gnd(gfs='1p00')#,url_data='https://nomads.ncep.noaa.gov/dods/gfs_1p00/gfs20220108/gfs_1p00_00z')
+from noawclg.plot import plot_data_from_place as pdp
+import matplotlib.pyplot as plt
+#
+
+date_base = '12/01/2023'
+hour = '18'
+data_noaa = gnd(date=date_base,hour=hour)#,url_data='https://nomads.ncep.noaa.gov/dods/gfs_1p00/gfs20220108/gfs_1p00_00z')
 
 place = 'juazeiro BA'
-print(data_noaa.get_noaa_keys())
 
+jua_pet = pdp(place=place,data=data_noaa)
 
-# ## rain's (mm)
-# def fmt(data): return data* 100_000
-# data_noaa.plot_data_from_place(place=place,path_file='plot_ch1.png',
-#                                title='Previsão de Chuvas\nPetrolina-PE/Juazeiro-BA',
-#                                 ylabel='mm',fmt_data=fmt,key_noaa='prateavesfc')
+jua_pet.path_file='plot_wind100m.png'
 
+jua_pet.key_noaa='tmp80m'
+jua_pet.title='Temperatura do Ar\nPetrolina-PE/Juazeiro-BA'
+jua_pet.ylabel='°C'
+jua_pet.xlabel='Janeiro de 2023'
 
+def fmt_data(data): return data-273
+jua_pet.fmt_data =  fmt_data
 
-## temperature (ºC)
-def fmt_t(data): return data
-data_noaa.plot_data_from_place(place=place,path_file='plot_wind100m.png',
-                               title='Velocidade dos Ventos\nPetrolina-PE/Juazeiro-BA',
-                                ylabel='m/s',fmt_data=fmt_t,key_noaa='vgrdmwl')
+jua_pet.render()
+#plt.show()
+
 
 ```
 result:

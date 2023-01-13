@@ -48,13 +48,15 @@ geolocator = Nominatim(user_agent='Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; 
 
 
 
-date_now = datetime.now
-date_base_param = date_now().strftime('%Y/%m/%d')
+__date_now = datetime.now
+date_base_param = __date_now().strftime('%d/%m/%Y')
 
 
+global date_base
+date_base = None #'08/01/2023'
 print(xr.__version__)
 
-def fmt(dt): return dt
+
 
 # function for get data from noaa dataOpen 
 # Tḧis function is the base from the all work
@@ -63,7 +65,7 @@ class get_noaa_data:
     __version__ = __version__
     __author__ = __author__
     
-    def __init__(self,date:str=None,hour:str='00',gfs:str='0p25',url_data:str=None):
+    def __init__(self,date:str=date_base,hour:str='00',gfs:str='0p25',url_data:str=None):
         '''
             params:
                 date: str
@@ -76,7 +78,7 @@ class get_noaa_data:
         self.date = date
         date = datetime.strptime(date,'%d/%m/%Y')
         date = date.strftime('%Y%m%d')
-        print(date)
+        #print(date)
         
         self.gfs = gfs
         self.url_data = url_data
@@ -127,12 +129,12 @@ class get_noaa_data:
     def get_data_from_point(self,point:tuple):
         '''
         '''
-        new_data = get_noaa_data(hour=self.hour,date=self.date,gfs=self.gfs,url_data=self.url_data)
+        #new_data = self.file #get_noaa_data(hour=self.hour,date=self.date,gfs=self.gfs,url_data=self.url_data)
         #data = self.file.variables
         
         lat,lon = point[0],360+(point[1]) if point[1]<0 else point[1]
         print(f"never print it!! just get the your need data's. ")
-        data_point = new_data.file_noaa.sel(lon=lon,lat=lat,method='nearest')
+        data_point = self.file_noaa.sel(lon=lon,lat=lat,method='nearest')
         # data_point = {'time':data_point.variables['time'],'data':data_point.variables[data_key]}
         
         return data_point
@@ -141,52 +143,10 @@ class get_noaa_data:
     def get_data_from_place(self,place:str):
         location = geolocator.geocode(place)
         point = (location.latitude, location.longitude)
-        print(point)
+        #print(point)
 
         data_point = self.get_data_from_point(point=point)
 
         return data_point
     
     
-
-    def plot_data_from_place(self,place:str,title=f'plot'
-                             ,path_file:str='plot_temp.png',dpi:int=600,
-                             by='by @gpftc_ifsertão',key_noaa='tmp80m',fmt_data=fmt,
-                             max_label:str='max',med_label='med',min_label='min',
-                             xlabel='date',ylabel='',show=True,cla=True):
-        if cla:
-            plt.cla()
-            plt.clf()
-        data_point = self.get_data_from_place(place)
-        temp = fmt_data(data_point[key_noaa])
-        print('getted data..')
-        temp = temp.to_pandas()
-
-        m_temp = temp.rolling(8).mean()
-        max_temp = temp.rolling(8).max()
-        min_temp = temp.rolling(8).min()
-
-        ax2 = max_temp.plot(label=max_label)
-        ax1 = m_temp.plot(label=med_label)
-        ax3 = min_temp.plot(label=min_label)
-
-        plt.title(title,fontweight='bold')
-        plt.legend()
-        #plt.annotate('by @gpftc_ifsertâo',xy=(temp.index[10],20))
-        plt.text(0.14, 0.07, by, fontsize=10, fontweight='bold', transform=plt.gcf().transFigure)
-        about_key=self.get_noaa_keys()[key_noaa]
-        key_about = f'{key_noaa}:\n {about_key}'
-        plt.text(0.65, 0.07, key_about, fontsize=8, transform=plt.gcf().transFigure)
-
-        plt.xlabel(xlabel)
-        plt.ylabel(ylabel)
-
-        plt.tight_layout()
-        plt.savefig(path_file,dpi=dpi)
-        if show:
-            plt.show()
-            
-        return plt
-
-
-
