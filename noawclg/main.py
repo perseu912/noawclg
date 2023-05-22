@@ -81,7 +81,7 @@ class get_noaa_data:
                     ex: 08/01/2022
         '''
         if date_base:
-            print('i fun')
+            #print('i fun')
             date=date_base
 
         elif not date:
@@ -101,7 +101,7 @@ class get_noaa_data:
         date=date.split('/')
         date=''.join(date)
         #print(date)
-        # url base from the data noaa in GFS 0.25 or GFS 1.00
+        #url base from the data noaa in GFS 0.25 or GFS 1.00
         #url_cdf=f'https://nomads.ncep.noaa.gov/dods/gfs_0p25/gfs{date}/gfs_0p25_{hour}z'
         url_cdf=f'https://nomads.ncep.noaa.gov/dods/gfs_{gfs}/gfs{date}/gfs_{gfs}_{hour}z'#'https://nomads.ncep.noaa.gov/dods/gfs_0p25/gfs20230103/gfs_0p25_00z'
        
@@ -115,7 +115,7 @@ class get_noaa_data:
         self.url_data = url_data
         self.hour = hour
         print(f'url_data: {url_cdf}')
-        # reading the data required in the param's
+        #reading the data required in the param's
         file = xr.open_dataset(url_cdf)
         
         self.file_noaa = file
@@ -125,7 +125,7 @@ class get_noaa_data:
         data_get = self.file_noaa.variables[key]
         return data_get
     
-    # getting the list data present in the data noaa GFS 0.25
+    #getting the list data present in the data noaa GFS 0.25
     def get_noaa_keys(self):
         '''
         '''

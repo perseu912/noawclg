@@ -123,3 +123,5 @@ result:
 <!-- the truest Reinan 13/01/23 01:58 :siga a rotina criada -->
 <!-- N se molde por ninguem e pra ninguem -->
 <!-- se precisar, abndone todos os complexos-->
+<!-- fique com qualquer uma, transe com quiem quiser transar ctg 10:15 14/01/23-->
+<!-- e demonstre isso em suas redes sociais, para vim mais-->
