@@ -56,7 +56,8 @@ date_base = None
 def set_date(date:str):
     global date_base
     date_base = date #'08/01/2023'
-print(xr.__version__)
+
+print(xr.__version__) # need just and only from 0.20.1 version of xarray
 
 
 
@@ -146,7 +147,7 @@ class get_noaa_data:
         #data = self.file.variables
         
         lat,lon = point[0],360+(point[1]) if point[1]<0 else point[1]
-        print(f"never print it!! just get the your need data's. ")
+        #print(f"never print it!! just get the your need data's. ")
         data_point = self.file_noaa.sel(lon=lon,lat=lat,method='nearest')
         # data_point = {'time':data_point.variables['time'],'data':data_point.variables[data_key]}
         

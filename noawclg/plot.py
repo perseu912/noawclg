@@ -29,7 +29,7 @@ class plot_data_from_place:
             plt.clf()
         data_point = self.data.get_data_from_place(self.place)
         temp = self.fmt_data(data_point[self.key_noaa])
-        print('getted data..')
+        #print('getted data..')
         
         temp = temp.to_pandas()
 
@@ -44,12 +44,12 @@ class plot_data_from_place:
         plt.title(self.title,fontweight='bold')
         plt.legend()
         #plt.annotate(self.author,xy=(temp.index[10],20))
-        plt.text(0.14, 0.01, self.author, fontsize=10, fontweight='bold', transform=plt.gcf().transFigure)
+        plt.text(0.14, 0.07, self.author, fontsize=10, fontweight='bold', transform=plt.gcf().transFigure)
         about_key=self.data.get_noaa_keys()[self.key_noaa]
         key_about = f'{self.key_noaa}:\n {about_key}'
-        plt.text(0.65, 0.007, key_about, fontsize=8, transform=plt.gcf().transFigure)
-        plt.text(0.65, -0.023, f'data: GFS{self.data.gfs} NOMADS-OpenDAP',color='gray', fontsize=8, transform=plt.gcf().transFigure)
-        plt.text(0.19, -0.02, 'NOAA/NASA',color='gray',fontweight='bold', fontsize=9, transform=plt.gcf().transFigure)
+        plt.text(0.65, 0.06, key_about, fontsize=8, transform=plt.gcf().transFigure)
+        plt.text(0.65, 0.04, f'data: GFS{self.data.gfs} NOMADS-OpenDAP',color='gray', fontsize=8, transform=plt.gcf().transFigure)
+        plt.text(0.19, 0.04, 'NOAA/NASA',color='gray',fontweight='bold', fontsize=9, transform=plt.gcf().transFigure)
 
         plt.xlabel(self.xlabel)
         plt.ylabel(self.ylabel)
