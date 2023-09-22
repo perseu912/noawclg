@@ -33,31 +33,30 @@ class plot_data_from_place:
         
         temp = temp.to_pandas()
 
-        m_temp = temp.rolling(8).mean()
-        max_temp = temp.rolling(8).max()
-        min_temp = temp.rolling(8).min()
+        self.m_temp = temp.rolling(8).mean()
+        self.max_temp = temp.rolling(8).max()
+        self.min_temp = temp.rolling(8).min()
+        self.index = temp.index
 
-        ax2 = max_temp.plot(label=self.max_label)
-        ax1 = m_temp.plot(label=self.med_label)
-        ax3 = min_temp.plot(label=self.min_label)
+        ax2 = self.max_temp.plot(label=self.max_label,color='red')
+        ax1 = self.m_temp.plot(label=self.med_label,color='green')
+        ax3 = self.min_temp.plot(label=self.min_label,color='blue')
 
         plt.title(self.title,fontweight='bold')
         plt.legend()
         #plt.annotate(self.author,xy=(temp.index[10],20))
-        plt.text(0.14, 0.07, self.author, fontsize=10, fontweight='bold', transform=plt.gcf().transFigure)
+        plt.text(0.14, 0.05, self.author, fontsize=10, fontweight='bold', transform=plt.gcf().transFigure)
         about_key=self.data.get_noaa_keys()[self.key_noaa]
         key_about = f'{self.key_noaa}:\n {about_key}'
-        plt.text(0.65, 0.06, key_about, fontsize=8, transform=plt.gcf().transFigure)
+        plt.text(0.65, 0.001, key_about, fontsize=8, transform=plt.gcf().transFigure)
         plt.text(0.65, 0.04, f'data: GFS{self.data.gfs} NOMADS-OpenDAP',color='gray', fontsize=8, transform=plt.gcf().transFigure)
-        plt.text(0.19, 0.04, 'NOAA/NASA',color='gray',fontweight='bold', fontsize=9, transform=plt.gcf().transFigure)
+        plt.text(0.19, 0.01, 'NOAA/NASA',color='gray',fontweight='bold', fontsize=9, transform=plt.gcf().transFigure)
 
         plt.xlabel(self.xlabel)
         plt.ylabel(self.ylabel)
 
         plt.tight_layout()
-        plt.savefig(self.path_file,dpi=self.dpi)
-        if self.show:
-            plt.show()
+        #plt.savefig(self.path_file,dpi=self.dpi)
             
         return plt
 
