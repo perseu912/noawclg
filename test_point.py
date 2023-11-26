@@ -3,10 +3,9 @@ from noawclg.main import get_noaa_data as gnd
 from noawclg.plot import plot_data_from_place as pdp
 import pandas as pd
 import matplotlib.pyplot as plt
-#plt.style.use('dark_background')
-#reinan voltou, porrrrraaaaaaaaa
 
-date_base = '21/09/2023'
+
+date_base = '23/09/2023'
 
 main.set_date(date_base)
 data_noaa = gnd()#,url_data='https://nomads.ncep.noaa.gov/dods/gfs_1p00/gfs20220108/gfs_1p00_00z')

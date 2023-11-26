@@ -66,7 +66,13 @@ date_base_param = __date_now().strftime('%d/%m/%Y')
 
 
 
-
+class pd:
+    def __init__(self,dt):
+        self.dt_pl = dt
+    
+    def __getitem__(self,key:str):
+        data_get = self.dt_pl.variables[key]
+        return data_get
 # function for get data from noaa dataOpen 
 # Tḧis function is the base from the all work
 # because its getting the data from noaa
@@ -140,6 +146,9 @@ class get_noaa_data:
         return keys_about
 
 
+
+
+
     def get_data_from_point(self,point:tuple):
         '''
         '''
@@ -161,6 +170,6 @@ class get_noaa_data:
 
         data_point = self.get_data_from_point(point=point)
 
-        return data_point
+        return pd(data_point)
     
     
