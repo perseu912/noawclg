@@ -1,14 +1,6 @@
 import noawclg.main as main
 import pandas as pda
 from datetime import datetime
-# from kitano.logging import puts
-
-print() # hulmidade
-# print(pd['tmp2m']-272)  # temperatura
-# print(pd['prateavesfc']) # chuva
-# print(pd['ugrd10m']) # vento lest-oeste
-# print(pd['vgrd10m']) # vento norte-sul
-# print(pd['gustsfc']) # jet wind
 
 
 def dict_place_data_base_climate(place,date_base):
