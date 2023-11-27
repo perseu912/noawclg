@@ -13,7 +13,7 @@ def dict_place_data_base_climate(place,date_base):
     temp = pd['tmp2m']-272
     temp_air = pd['tmp100m'] - 272
     temp_jet_air = pd['tmpmwl'] - 272
-    rain =pd['pwatclm']*1e5
+    rain =pd['pwatclm']
     cloud = pd['tcdcclm']
     v_j = pd['ugrd10m']
     v_k = pd['vgrd10m']
