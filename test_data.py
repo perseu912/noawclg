@@ -4,4 +4,5 @@ data_noaa = gnd()
 
 temp = data_noaa['tmp80m']
 
-print(len(temp.to_pandas()))
+print(dir(temp))
+print(len(temp.to_dict()))
