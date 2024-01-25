@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
     readme = fh.read()
 
 setup(name='noawclg',
-    version='0.0.7.1',
+    version='0.0.5',
     url='https://github.com/reinanbr/noawclg',
     license='GPLv3',
     author='Reinan Br',
@@ -18,4 +18,4 @@ setup(name='noawclg',
     keywords='climate weather noaa',
     description=u'Library for getting dataset from noaa site',
     packages=find_packages(),
-    install_requires=['numpy','xarray','netCDF4','matplotlib','geopy','openpyxl'],)
+    install_requires=['numpy','xarray<=0.20.1','netCDF4<=1.5.7','matplotlib','geopy','openpyxl'],)

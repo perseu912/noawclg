@@ -32,7 +32,39 @@
 ```sh
 $ pip3 install noawcgl -U
 ```
-note: netcdf=1.5.7 | xarray=0.20.1
+
+<br>
+
+#### Problem with netcdf?
+
+
+try:
+
+```sh
+sudo add-apt-repository universe
+sudo apt-get update
+sudo apt-get install libhdf5-serial-dev
+sudo apt-get install libnetcdf-dev
+
+
+export HDF5_DIR=/usr/local/hdf5
+export HDF5_DIR=/usr/include/hdf5
+
+pip install netcdf4
+```
+
+or
+
+```sh
+sudo apt-get install libhdf5-serial-dev netcdf-bin libnetcdf-dev
+
+export HDF5_DIR=/usr/local/hdf5
+export HDF5_DIR=/usr/include/hdf5
+
+pip install netcdf4
+```
+<hr>
+
 ## Examples
 ### getting data
 <br>
