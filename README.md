@@ -157,3 +157,7 @@ result:
 <!-- se precisar, abndone todos os complexos-->
 <!-- fique com qualquer uma, transe com quiem quiser transar ctg 10:15 14/01/23-->
 <!-- e demonstre isso em suas redes sociais, para vim mais-->
+
+
+
+<img src="https://reysofts.com.br/engine/libs/save_table_access_libs.php?lib_name=noawclg">
