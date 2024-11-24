@@ -45,7 +45,7 @@ import matplotlib.pyplot as plt
 
 
 
-plt.style.use('seaborn')
+#plt.style.use('seaborn')
 from geopy.geocoders import Nominatim
 geolocator = Nominatim(user_agent='Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; GT-I9500 Build/KOT49H) AppleWebKit/537.36(KHTML, like Gecko)Version/4.0 MQQBrowser/5.0 QQ-URL-Manager Mobile Safari/537.36')
 

@@ -51,6 +51,7 @@ export HDF5_DIR=/usr/local/hdf5
 export HDF5_DIR=/usr/include/hdf5
 
 pip install netcdf4
+pip install -U xarray #24/11/24
 ```
 
 or
